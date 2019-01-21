@@ -12,16 +12,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// EC2Instance is a subset of available EC2 metadata
-// pulled for metadata
-type EC2Instance struct {
-	ID    string
-	Type  string
-	State string
-	IP    string
-	Name  string
-}
-
 // getNameFromTags is a helper to grab the instance name from the array of tags
 // This is of course dependent on ec2 instances being given a name KV pair
 func getNameFromTags(tags []*ec2.Tag) string {
@@ -154,14 +144,4 @@ var listCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(listCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// listCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// listCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
